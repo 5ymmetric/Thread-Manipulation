@@ -1,0 +1,278 @@
+Breakpoint 1 at 0x400663: file threadRace.c, line 36.
+Breakpoint 2 at 0x4005db: file threadRace.c, line 21.
+Breakpoint 3 at 0x400607: file threadRace.c, line 26.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+Breakpoint 4 at 0x4006d2: file threadRace.c, line 43.
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:41
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff77fc700 (LWP 19073)]
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[New Thread 0x7ffff6ffb700 (LWP 19074)]
+[Switching to Thread 0x7ffff6ffb700 (LWP 19074)]
+
+Thread 3 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:26
+26			for (i = 0; i < MAX_COUNT; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:41
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff67fa700 (LWP 19075)]
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[New Thread 0x7ffff5ff9700 (LWP 19076)]
+[Switching to Thread 0x7ffff5ff9700 (LWP 19076)]
+
+Thread 5 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:26
+26			for (i = 0; i < MAX_COUNT; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  0x000000000040069e in main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  0x000000000040069e in main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:41
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:41
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff57f8700 (LWP 19077)]
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[New Thread 0x7ffff4ff7700 (LWP 19078)]
+[Switching to Thread 0x7ffff4ff7700 (LWP 19078)]
+
+Thread 7 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:26
+26			for (i = 0; i < MAX_COUNT; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  0x000000000040069e in main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:41
+41				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff47f6700 (LWP 19079)]
+[Switching to Thread 0x7ffff47f6700 (LWP 19079)]
+
+Thread 8 "threadRace" hit Breakpoint 2, MyCounterPlus () at threadRace.c:21
+21			for (i = 0; i < MAX_COUNT; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:36
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:38
+38			if ((i % 2) != 0)
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[New Thread 0x7ffff3ff5700 (LWP 19080)]
+[Switching to Thread 0x7ffff3ff5700 (LWP 19080)]
+
+Thread 9 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:26
+26			for (i = 0; i < MAX_COUNT; i++)
+[Switching to thread 1 (Thread 0x7ffff7fb5740 (LWP 19065))]
+#0  0x000000000040069e in main () at threadRace.c:39
+39				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+36		for (i = 0; i < NUMBER_OF_THREADS; i++)
+
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fb5740 (LWP 19065) "threadRace" main () at threadRace.c:36
+  2    Thread 0x7ffff77fc700 (LWP 19073) "threadRace" MyCounterPlus () at threadRace.c:21
+  3    Thread 0x7ffff6ffb700 (LWP 19074) "threadRace" MyCounterMinus () at threadRace.c:26
+  4    Thread 0x7ffff67fa700 (LWP 19075) "threadRace" MyCounterPlus () at threadRace.c:21
+  5    Thread 0x7ffff5ff9700 (LWP 19076) "threadRace" MyCounterMinus () at threadRace.c:26
+  6    Thread 0x7ffff57f8700 (LWP 19077) "threadRace" MyCounterPlus () at threadRace.c:21
+  7    Thread 0x7ffff4ff7700 (LWP 19078) "threadRace" MyCounterMinus () at threadRace.c:26
+  8    Thread 0x7ffff47f6700 (LWP 19079) "threadRace" MyCounterPlus () at threadRace.c:21
+  9    Thread 0x7ffff3ff5700 (LWP 19080) "threadRace" MyCounterMinus () at threadRace.c:26
+
+Initial sharedCounter == 0
+
+
+Thread 2 (Thread 0x7ffff77fc700 (LWP 19073)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 2 execution, sharedCounter == 2000000
+
+
+Thread 3 (Thread 0x7ffff6ffb700 (LWP 19074)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 3 execution, sharedCounter == 0
+
+
+Thread 4 (Thread 0x7ffff67fa700 (LWP 19075)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 4 execution, sharedCounter == 2000000
+
+
+Thread 5 (Thread 0x7ffff5ff9700 (LWP 19076)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 5 execution, sharedCounter == 0
+
+
+Thread 6 (Thread 0x7ffff57f8700 (LWP 19077)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 6 execution, sharedCounter == 2000000
+
+
+Thread 7 (Thread 0x7ffff4ff7700 (LWP 19078)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 7 execution, sharedCounter == 0
+
+
+Thread 8 (Thread 0x7ffff47f6700 (LWP 19079)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 8 execution, sharedCounter == 2000000
+
+
+Thread 9 (Thread 0x7ffff3ff5700 (LWP 19080)):
+0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+After thread 9 execution, sharedCounter == 0
+
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fb5740 (LWP 19065) "threadRace" main () at threadRace.c:36
+  2    Thread 0x7ffff77fc700 (LWP 19073) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+  3    Thread 0x7ffff6ffb700 (LWP 19074) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+  4    Thread 0x7ffff67fa700 (LWP 19075) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+  5    Thread 0x7ffff5ff9700 (LWP 19076) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+  6    Thread 0x7ffff57f8700 (LWP 19077) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+  7    Thread 0x7ffff4ff7700 (LWP 19078) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+  8    Thread 0x7ffff47f6700 (LWP 19079) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+  9    Thread 0x7ffff3ff5700 (LWP 19080) "threadRace" 0x00007ffff7bc04f9 in start_thread () from /lib64/libpthread.so.0
+
+Final sharedCounter == 0
+
+
+Thread 2 (Thread 0x7ffff3ff5700 (LWP 19080)):
+[Thread 0x7ffff77fc700 (LWP 19073) exited]
+No unwaited-for children left.
+
+Thread 3 (Thread 0x7ffff3ff5700 (LWP 19080)):
+[Thread 0x7ffff6ffb700 (LWP 19074) exited]
+No unwaited-for children left.
+
+Thread 4 (Thread 0x7ffff3ff5700 (LWP 19080)):
+[Thread 0x7ffff67fa700 (LWP 19075) exited]
+No unwaited-for children left.
+
+Thread 5 (Thread 0x7ffff3ff5700 (LWP 19080)):
+[Thread 0x7ffff5ff9700 (LWP 19076) exited]
+No unwaited-for children left.
+
+Thread 6 (Thread 0x7ffff3ff5700 (LWP 19080)):
+[Thread 0x7ffff57f8700 (LWP 19077) exited]
+No unwaited-for children left.
+
+Thread 7 (Thread 0x7ffff3ff5700 (LWP 19080)):
+[Thread 0x7ffff4ff7700 (LWP 19078) exited]
+No unwaited-for children left.
+
+Thread 8 (Thread 0x7ffff3ff5700 (LWP 19080)):
+[Thread 0x7ffff47f6700 (LWP 19079) exited]
+No unwaited-for children left.
+
+Thread 9 (Thread 0x7ffff7fb5740 (LWP 19065)):
+[Thread 0x7ffff3ff5700 (LWP 19080) exited]
+No unwaited-for children left.
+
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fb5740 (LWP 19065) "threadRace" main () at threadRace.c:36
+
+myName == Karthik Reddy Pagilla
+
+[Inferior 1 (process 19065) exited normally]

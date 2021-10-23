@@ -1,0 +1,86 @@
+set pagination off
+
+set logging file pagilla.output
+
+set logging on
+
+break 36
+commands
+silent
+set scheduler-locking on
+end
+
+break 19
+commands
+set $k = 5
+thread 1
+end
+
+break 24
+commands
+set $k = 5
+thread 1
+end
+
+run
+
+break 43 thread 1
+commands
+set $k = 9
+end
+
+define thread_maker
+    set $k = 0
+    while($k < 3)
+      thread 1
+      step
+      set $k = $k + 1
+    end
+end
+
+set $num_threads = 0
+
+while($num_threads < 9)
+    thread 1
+    if(i < 8)
+      thread_maker
+      set $num_threads = $num_threads + 1
+    end
+end
+
+printf "\n"
+
+info threads
+
+printf "\nInitial sharedCounter == %d\n\n", sharedCounter
+
+delete breakpoints
+
+set $thread_number = 2
+
+while($thread_number < 10)
+  thread apply $thread_number finish
+  printf "\nAfter thread %d execution, sharedCounter == %d\n\n", $thread_number, sharedCounter
+  set $thread_number = $thread_number + 1
+end
+
+info threads
+
+printf "\nFinal sharedCounter == %d\n\n", sharedCounter
+
+set $thread_number = 2
+
+while($thread_number < 10)
+  thread apply $thread_number continue
+  set $thread_number = $thread_number + 1
+end
+
+printf "\n"
+
+info threads
+
+printf "\nmyName == %s\n\n", myName
+
+continue
+
+quit
